@@ -1,3 +1,4 @@
+import Chart from 'chart.js/auto';
 import { Component } from '@angular/core';
 import {Subscription} from 'rxjs';
 import {ListeApp} from '../liste-app';
