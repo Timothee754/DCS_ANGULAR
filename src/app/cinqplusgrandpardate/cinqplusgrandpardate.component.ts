@@ -24,10 +24,6 @@ export class CinqplusgrandpardateComponent {
   }
 
   createChart(): void {
-
-    createChart()
-  :
-    void {
       const ctx = document.getElementById('cinqplusgrand') as HTMLCanvasElement;
       this.chart = new Chart(ctx, {
         type: 'pie',
@@ -62,8 +58,8 @@ export class CinqplusgrandpardateComponent {
             }
           }
         }
-      }),
-    }
+      });
   }
+
 
 }
