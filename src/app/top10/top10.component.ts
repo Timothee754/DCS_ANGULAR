@@ -1,8 +1,9 @@
-import { Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import { Text } from '../text';
 import { ListeApp } from '../liste-app';
 import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
+import {GetTop10Service} from '../get-top10.service';
 @Component({
   selector: 'app-top10',
   imports: [],
@@ -10,15 +11,12 @@ import { Subscription } from 'rxjs';
   styleUrl: './top10.component.css'
 })
 export class Top10Component implements OnInit {
-  private url = "http://127.0.0.1:8000/api/centresactivite/top10byAp";
-  public liste_app: ListeApp[] = [];
-  private subscription!: Subscription;
+  constructor() {}
+  private top10service = inject(GetTop10Service)
+  liste_app = this.top10service.top10app
 
-  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.subscription = this.http.get<ListeApp[]>(this.url).subscribe(app_api => {
-      this.liste_app = app_api;
-    });
+    this.top10service.getTop10apps().subscribe()
   }
 }
